@@ -48,4 +48,9 @@ public class Taak {
     public void setVoltooid(boolean voltooid) {
         this.voltooid = voltooid;
     }
+
+
+    public String getTaak() {
+        return null;
+    }
 }

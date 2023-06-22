@@ -12,21 +12,16 @@
 <body><header>
     <h1>To-Do Lijst</h1>
     <form id="todo-form">
-        <label for="todo-input"></label><input type="text" id="todo-input" placeholder="Voeg een nieuwe taak toe" required>
-      <button type="submit">Toevoegen</button>
+        <label for="todo-input"></label><input type="text" id="inputField" placeholder="Voeg een nieuwe taak toe" >
+      <button type="submit" onclick="addTask()">Toevoegen</button>
     </form>
     <ul id="todo-list"></ul></header>
 
 <main>
-    <section class="task-list">
+    <section class="taskList">
         <div class="taken">
             <div class="content">
-                <label>
-                    <input
-                    type="text"
-                    class="text"
-                    value="dit is dummy data"
-                    readonly/>
+                <label>Hier komen de taken
                 </label>
 
                 <div class="actions">
@@ -39,8 +34,8 @@
     </section>
 
 </main>
-  
-    <script src="components/taken.js"></script>
+<script src="components/taken.js"></script>
+
   </body>
   </html>
   
