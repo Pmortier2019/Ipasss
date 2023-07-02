@@ -2,6 +2,7 @@ let localhost = 'http://localhost:8080/';
 export default class LoginService {
     token = '...'
 
+
     isLoggedIn() {
         if (window.sessionStorage.getItem("myJWT")) return true;
         else return false;
@@ -14,7 +15,7 @@ export default class LoginService {
             return alert("je hebt geen inloggegevens ingevuld")
         }
 
-        return fetch(localhost + 'restservices/login', {
+        return fetch('restservices/login', {
             method: 'POST',
             body: JSON.stringify(bodyCredentials),
             headers: {
@@ -23,9 +24,10 @@ export default class LoginService {
         }).then(r => {
             return r.json()
         }).then(j => {
-            window.sessionStorage.setItem("myJWT", j.token);
+            window.sessionStorage.setItem("myJWT", myJson.JWT);
         }).catch(() => alert("geen juiste inloggegevens ingevuld"))
     }
+
 
 
     getUser() {

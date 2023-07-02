@@ -1,4 +1,4 @@
-package Ipass.hu;
+package Ipass.hu.setup;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
