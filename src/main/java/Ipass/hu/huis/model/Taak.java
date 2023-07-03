@@ -1,28 +1,47 @@
 package Ipass.hu.huis.model;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Taak {
-    private int id;
+    private String naam;
+    private String duur;
     private String omschrijving;
-    private Date deadline;
-    private boolean voltooid;
+    private int id;
+    private static List<Taak> taken = new ArrayList<>();
 
+    public Taak() {
+    }
 
-    public Taak(int id, String omschrijving, Date deadline, boolean voltooid) {
-        this.id = id;
+    public Taak(String naam, String duur, String omschrijving, int id) {
+        this.naam = naam;
+        this.duur = duur;
         this.omschrijving = omschrijving;
-        this.deadline = deadline;
-        this.voltooid = voltooid;
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
         this.id = id;
+    }
+
+    public static List<Taak> getTaken() {
+        return taken;
+    }
+
+    public static void addTaak(Taak taak) {
+        taken.add(taak);
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getDuur() {
+        return duur;
+    }
+
+    public void setDuur(String duur) {
+        this.duur = duur;
     }
 
     public String getOmschrijving() {
@@ -33,24 +52,11 @@ public class Taak {
         this.omschrijving = omschrijving;
     }
 
-    public Date getDeadline() {
-        return deadline;
+    public int getId() {
+        return id;
     }
 
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
-    }
-
-    public boolean isVoltooid() {
-        return voltooid;
-    }
-
-    public void setVoltooid(boolean voltooid) {
-        this.voltooid = voltooid;
-    }
-
-
-    public String getTaak() {
-        return null;
+    public void setId(int id) {
+        this.id = id;
     }
 }

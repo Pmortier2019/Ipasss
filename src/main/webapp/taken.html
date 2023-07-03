@@ -4,24 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript">
-      </script>
-      <title>HuisHouden</title>
-      <link rel="stylesheet" href="pages/taken.css" />
+    <title>HuisHouden</title>
+    <link rel="stylesheet" href="pages/taken.css" />
+    <link rel="stylesheet" href="pages/sidenav.css" />
+
 </head>
-<body><header>
-    <h1>To-Do Lijst</h1>
+<body>
+
+<div class="side-nav">
+    <a href="taakverdeel.html">Agenda</a>
+    <a href="turven.html">Turven</a>
+    <a href="taken.html">Taken</a>
+</div>
+<header>
+    <h1>Alle aangemaakte taken</h1>
     <form id="todo-form">
-        <label for="todo-input"></label><input type="text" id="todo-input" placeholder="Voeg een nieuwe taak toe" required>
-      <button type="submit">Toevoegen</button>
+        <label for="inputName">Naam:</label>
+        <input type="text" id="inputName" required><br>
+        <label for="inputDuration">Duur:</label>
+        <input type="text" id="inputDuration" required><br>
+        <label for="inputDescription">Omschrijving:</label>
+        <input type="text" id="inputDescription" required><br>
+        <button type="submit">Toevoegen</button>
     </form>
-    <ul id="todo-list"></ul></header>
+    <ul id="taskList"></ul>
+</header>
 
-<main>
+<table>
+    <thead>
+    <th>Naam</th>
+    <th>Duur</th>
+    <th>Aantal</th>
+    <th>ID</th>
+    </thead>
+    <tbody id="data-output"></tbody>
+</table>
 
-</main>
-  
-    <script src="components/taken.js"></script>
-  </body>
-  </html>
-  
+
+<script src="components/taken.js"></script>
+</body>
+</html>

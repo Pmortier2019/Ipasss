@@ -1,7 +1,12 @@
+/* taken.css */
+
+/* taken.css */
+
 body {
   font-family: "Poppins", sans-serif;
   padding: 20px;
   background-color: #b38add;
+  margin-left: 200px;
 }
 
 h1 {
@@ -10,12 +15,22 @@ h1 {
 
 form {
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin-bottom: 10px;
 }
 
 input[type="text"] {
-  width: 70%;
+  flex: 1;
   padding: 5px;
-  text-align: center;
 }
 
 button {
@@ -34,6 +49,65 @@ li {
   text-decoration: line-through;
   color: #999999;
 }
+
 .content {
   text-align: center;
+}
+
+table {
+  width: 100%;
+  margin: 30px auto;
+  border-collapse: collapse;
+}
+
+table th {
+  padding: 10px 0;
+  background-color: #f4f4f4;
+  border: thin solid #d4d4d4;
+}
+
+table td {
+  padding: 10px;
+  border: thin solid #d4d4d4;
+  text-align: center;
+  background-color: #fff;
+}
+
+table img {
+  width: 60%;
+  max-width: 100%;
+}
+
+table td.total-price {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+table a {
+  text-decoration: none;
+  color: darkred;
+  background-color: #ffecef;
+  padding: 10px 15px;
+}
+
+table a:active {
+  background-color: #ccf4d6;
+  color: green;
+}
+
+table select {
+  padding: 10px;
+  width: 200px;
+  font-size: 16px;
+  border: thin solid #d4d4d4;
+  background-color: transparent;
+}
+
+table select:focus {
+  outline: none;
+}
+
+table img {
+  width: 60%;
+  max-width: 100%;
 }
