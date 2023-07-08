@@ -25,22 +25,17 @@ public class LoginResource {
         String username = request.getUsername();
         String password = request.getPassword();
         List<Persoon> dummyUsers = (List<Persoon>) servletContext.getAttribute("dummyUsers");
-
+// controleeer ww en pw
         for (Persoon user : dummyUsers) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 String token = generateToken(username);
                 return Response.ok(new LoginResponse(token)).build();
             }
         }
-
-        // Inloggen is mislukt, stuur een foutmelding terug
         return Response.status(Response.Status.UNAUTHORIZED).build();
     }
 
     private String generateToken(String username) {
-        // Implementeer hier je logica om een JWT-token te genereren
-        // Je kunt bibliotheken zoals jjwt gebruiken om dit te vereenvoudigen
-        // Voorbeeld: return JWTUtils.generateToken(username);
         return "sample_token";
     }
 }

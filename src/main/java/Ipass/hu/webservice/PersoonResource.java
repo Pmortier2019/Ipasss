@@ -33,7 +33,7 @@ public class PersoonResource {
         return persons;
     }
 
-
+//verandert het aantal van de personen
     @POST
     @Path("/update-person")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -66,11 +66,7 @@ public class PersoonResource {
         // Genereer een uniek id voor de nieuwe gebruiker
         int newId = generateUniqueId(users);
         newUser.setId(String.valueOf(newId));
-
-        // Voeg de nieuwe gebruiker toe aan de lijst
         users.add(newUser);
-
-        // Werk de servletContext bij met de bijgewerkte lijst van gebruikers
         servletContext.setAttribute("dummyUsers", users);
 
         return Response.ok().build();

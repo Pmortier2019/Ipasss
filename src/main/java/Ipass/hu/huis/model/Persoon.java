@@ -15,10 +15,13 @@ public class Persoon {
 
     private String username;
     private String password;
+    private List<Taak> toegewezenTaken;
 
     public Persoon() {
     }
-
+    public void setToegewezenTaken(List<Taak> taken) {
+        this.toegewezenTaken = taken;
+    }
     @JsonCreator
     public Persoon(@JsonProperty("naam") String naam, @JsonProperty("rol") String rol,
                    @JsonProperty("geslacht") String geslacht, @JsonProperty("aantal") int aantal,

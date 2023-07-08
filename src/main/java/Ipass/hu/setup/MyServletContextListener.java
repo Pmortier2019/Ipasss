@@ -49,10 +49,10 @@ public class MyServletContextListener implements ServletContextListener {
 
 
 
-            dummyUsers.add(new Persoon("Pieter", "Bewoner", "Man", 10, "1", "pieter", "password"));
-            dummyUsers.add(new Persoon("Reinder", "Bewoner", "Vrouw", 10, "2", "reinder456", "password2"));
-            dummyUsers.add(new Persoon("Cristiano Ronaldo", "Bewoner", "Man", 10, "3", "cristiano789", "password3"));
-            dummyUsers.add(new Persoon("Beatrix", "Bewoner", "Vrouw", 10, "4", "beatrix101", "password4"));
+            dummyUsers.add(new Persoon("Pieter", "Bewoner", "Man", 3, "1", "pieter", "password"));
+            dummyUsers.add(new Persoon("Reinder", "Bewoner", "Vrouw", 7, "2", "reinder456", "password2"));
+            dummyUsers.add(new Persoon("Cristiano Ronaldo", "Bewoner", "Man", 2, "3", "cristiano789", "password3"));
+            dummyUsers.add(new Persoon("Beatrix", "Bewoner", "Vrouw", 1, "4", "beatrix101", "password4"));
 
 
 

@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Path("/taakverdeling")
 public class TaakVerdelingResource {
@@ -31,21 +32,22 @@ public class TaakVerdelingResource {
         List<Persoon> personen = (List<Persoon>) servletContext.getAttribute("dummyUsers");
 
         List<TaakVerdeling> taakVerdeling = new ArrayList<>();
-        int huidigePersoonIndex = 0;
-        for (Taak taak : taken) {
-            Persoon persoon = personen.get(huidigePersoonIndex);
+
+        List<Taak> beschikbareTaken = new ArrayList<>(taken); // Maak een kopie van de takenlijst
+// gaat door de personen en het aantal turven heen om deze aan iemand tpe te wijzig
+        for (Persoon persoon : personen) {
             int aantalTurven = persoon.getAantal();
 
-            if (aantalTurven > 0) {
+            for (int i = 0; i < aantalTurven; i++) {
+                if (beschikbareTaken.isEmpty()) {
+                    break; // Stop de lus als er geen taken meer beschikbaar zijn
+                }
+
+                int randomIndex = new Random().nextInt(beschikbareTaken.size()); // Kies een willekeurige index
+                Taak taak = beschikbareTaken.get(randomIndex); // Krijg de taak op basis van de willekeurige index
+
                 TaakVerdeling verdeling = new TaakVerdeling(persoon, taak);
                 taakVerdeling.add(verdeling);
-                aantalTurven--;
-                persoon.setAantal(aantalTurven - 1 );
-            }
-
-            huidigePersoonIndex++;
-            if (huidigePersoonIndex >= personen.size()) {
-                huidigePersoonIndex = 0;
             }
         }
 
@@ -57,5 +59,4 @@ public class TaakVerdelingResource {
             e.printStackTrace();
             return Response.serverError().build();
         }
-    }
-}
+}}
