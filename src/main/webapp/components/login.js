@@ -5,7 +5,7 @@ function login() {
     const password = document.forms["loginform"]["password"].value;
 
     // Maak een HTTP POST-verzoek naar de inlog-API
-    return fetch('/restservices/login', {
+    return fetch('https://ipass-pieter.azurewebsites.net/restservices/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ function login() {
                     // Sla de JWT-token op in de lokale opslag
                     localStorage.setItem('token', token);
 
-                    // Doorgaan naar de gewenste pagina (bijv. agenda.html)
+                    // Doorgaan naar de gewenste pagina (bijv. taakverdeel.html)
                     window.location.href = 'taakverdeel.html';
                 });
             } else {
@@ -41,3 +41,6 @@ function login() {
 
 // Eventlistener voor de login knop
 document.getElementById('login').addEventListener('click', login);
+document.getElementById('register').addEventListener('click', () => {
+    window.location.href = 'register.html';
+});

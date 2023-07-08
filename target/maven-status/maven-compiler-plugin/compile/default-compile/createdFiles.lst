@@ -1,5 +1,4 @@
 Ipass\hu\webservice\TaakResource.class
-Ipass\hu\webservice\LoginRequest.class
 Ipass\hu\webservice\LoginResponse.class
 Ipass\hu\huis\model\TaakVerdeling.class
 Ipass\hu\webservice\PersoonJsonPersister.class

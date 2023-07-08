@@ -35,49 +35,57 @@ function refreshTaskList() {
     fetchTasks();
 }
 
-// Functie om een taak toe te voegen
 function addTask() {
-    // Haal de invoervelden op
-    const taskName = document.getElementById("inputName").value;
-    const taskDuration = document.getElementById("inputDuration").value;
-    const taskDescription = document.getElementById("inputDescription").value;
+    return new Promise((resolve, reject) => {
+        const taskName = document.getElementById("inputName").value;
+        const taskDuration = document.getElementById("inputDuration").value;
+        const taskDescription = document.getElementById("inputDescription").value;
+// Trim, geen lege invoervelden
+        if (taskName.trim() === "" || taskDuration.trim() === "" || taskDescription.trim() === "") {
+            reject(new Error("Vul alle invoervelden in."));
+            return;
+        }
 
-    // Maak een taakobject
-    const task = {
-        naam: taskName,
-        duur: taskDuration,
-        omschrijving: taskDescription,
-        id: ""
-    };
+        const durationValue = parseInt(taskDuration);
+        if (isNaN(durationValue)) {
+            alert("probeer opnieuw, voer bij duur een getal in")
+            reject(new Error("Ongeldige invoer voor tijdsduur. Voer alleen getallen in."));
+            return;
+        }
+        const task = {
+            naam: taskName,
+            duur: durationValue+ " minuten",
+            omschrijving: taskDescription,
+            id: ""
+        };
 
-    // Stuur het taakobject naar de backend
-    fetch("https://ipass-pieter.azurewebsites.net/restservices/taken/update-taken", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(task)
-    })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Er is een fout opgetreden bij het verwerken van het verzoek.");
-            }
+        fetch("https://ipass-pieter.azurewebsites.net/restservices/taken/update-taken", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(task)
         })
-        .then(response => {
-            if (response.success) {
-                console.log("Taak succesvol toegevoegd.");
-                // Vervang de huidige lijst met taken door de bijgewerkte lijst
-                fetchTasks();
-            } else {
-                console.log("Fout bij het toevoegen van de taak.");
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
+            .then(response => {
+                if (response.ok) {
+                    resolve(response.json());
+                } else {
+                    throw new Error("Er is een fout opgetreden bij het verwerken van het verzoek.");
+                }
+            })
+            .then(response => {
+                if (response.success) {
+                    resolve("Taak succesvol toegevoegd.");
+                } else {
+                    reject(new Error("Fout bij het toevoegen van de taak."));
+                }
+            })
+            .catch(error => {
+                reject(error);
+            });
+    });
 }
+
 
 
 // Eventlistener voor het formulier

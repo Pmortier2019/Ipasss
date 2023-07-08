@@ -57,4 +57,33 @@ public class PersoonResource {
             return Response.serverError().build();
         }
     }
+    @POST
+    @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addUser(Persoon newUser) {
+        List<Persoon> users = (List<Persoon>) servletContext.getAttribute("dummyUsers");
+
+        // Genereer een uniek id voor de nieuwe gebruiker
+        int newId = generateUniqueId(users);
+        newUser.setId(String.valueOf(newId));
+
+        // Voeg de nieuwe gebruiker toe aan de lijst
+        users.add(newUser);
+
+        // Werk de servletContext bij met de bijgewerkte lijst van gebruikers
+        servletContext.setAttribute("dummyUsers", users);
+
+        return Response.ok().build();
+    }
+
+    // Hulpmethode om een uniek id te genereren
+    private int generateUniqueId(List<Persoon> users) {
+        int newId = users.size() + 1;
+        for (Persoon user : users) {
+            if (user.getId().equals(String.valueOf(newId))) {
+                newId++;
+            }
+        }
+        return newId;
+    }
 }

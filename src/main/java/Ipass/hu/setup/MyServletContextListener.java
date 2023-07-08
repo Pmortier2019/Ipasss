@@ -15,8 +15,8 @@ import java.util.List;
 public class MyServletContextListener implements ServletContextListener {
 
 
+    private List<Persoon> dummyUsers;
 
-    public static ArrayList<Persoon> personen= new ArrayList<Persoon>();
 
 
     public void contextInitialized(ServletContextEvent sce) {
@@ -49,10 +49,10 @@ public class MyServletContextListener implements ServletContextListener {
 
 
 
-            dummyUsers.add(new Persoon("Pieter", "Bewoner", "Man", 14, "1", "pieter123", "password1"));
-            dummyUsers.add(new Persoon("Reinder", "Bewoner", "Vrouw", 3, "2", "reinder456", "password2"));
-            dummyUsers.add(new Persoon("Cristiano Ronaldo", "Bewoner", "Man", 0, "3", "cristiano789", "password3"));
-            dummyUsers.add(new Persoon("Beatrix", "Bewoner", "Vrouw", 5, "4", "beatrix101", "password4"));
+            dummyUsers.add(new Persoon("Pieter", "Bewoner", "Man", 10, "1", "pieter", "password"));
+            dummyUsers.add(new Persoon("Reinder", "Bewoner", "Vrouw", 10, "2", "reinder456", "password2"));
+            dummyUsers.add(new Persoon("Cristiano Ronaldo", "Bewoner", "Man", 10, "3", "cristiano789", "password3"));
+            dummyUsers.add(new Persoon("Beatrix", "Bewoner", "Vrouw", 10, "4", "beatrix101", "password4"));
 
 
 
@@ -69,4 +69,11 @@ public class MyServletContextListener implements ServletContextListener {
 
         System.out.println("ContextListener - Initialized");
 
-    }}
+    }
+    public List<Persoon> getDummyUsers() {
+        return dummyUsers;
+    }
+    public void setDummyUsers(List<Persoon> dummyUsers) {
+        this.dummyUsers = dummyUsers;
+    }
+}
