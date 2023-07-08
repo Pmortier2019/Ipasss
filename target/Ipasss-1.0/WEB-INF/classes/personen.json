@@ -1,0 +1,37 @@
+[
+  {
+    "naam": "Persoon 1",
+    "rol": "Rol 1",
+    "geslacht": "Man",
+    "aantal": 0,
+    "id": "1"
+  },
+  {
+    "naam": "Persoon 2",
+    "rol": "Rol 2",
+    "geslacht": "Vrouw",
+    "aantal": 0,
+    "id": "2"
+  },
+  {
+    "naam": "Persoon 3",
+    "rol": "Rol 1",
+    "geslacht": "Man",
+    "aantal": 0,
+    "id": "3"
+  },
+  {
+    "naam": "Persoon 4",
+    "rol": "Rol 2",
+    "geslacht": "Vrouw",
+    "aantal": 0,
+    "id": "4"
+  },
+  {
+    "naam": "Persoon 5",
+    "rol": "Rol 1",
+    "geslacht": "Man",
+    "aantal": 0,
+    "id": "5"
+  }
+]

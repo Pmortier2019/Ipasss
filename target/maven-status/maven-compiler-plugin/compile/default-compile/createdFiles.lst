@@ -1,0 +1,10 @@
+Ipass\hu\webservice\TaakResource.class
+Ipass\hu\webservice\LoginRequest.class
+Ipass\hu\webservice\LoginResponse.class
+Ipass\hu\huis\model\TaakVerdeling.class
+Ipass\hu\webservice\PersoonJsonPersister.class
+Ipass\hu\setup\MyServletContextListener.class
+Ipass\hu\persistence\PersistenceManager.class
+Ipass\hu\webservice\LoginResource.class
+Ipass\hu\webservice\PersoonJsonPersister$1.class
+Ipass\hu\webservice\TaakVerdelingResource.class
