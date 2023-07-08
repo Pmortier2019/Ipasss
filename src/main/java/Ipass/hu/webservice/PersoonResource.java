@@ -5,7 +5,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -21,30 +23,22 @@ import javax.ws.rs.Produces;
 public class PersoonResource {
 
 
+    @Context
+    private ServletContext servletContext;
 
-        @GET
-        @Produces(MediaType.APPLICATION_JSON)
-        public Response getPersonen() {
-            List<Persoon> personen = Persoon.createSampleUsers();
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                String json = objectMapper.writeValueAsString(personen);
-                return Response.ok(json).build();
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-                return Response.serverError().build();
-            }
-        }
-
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Persoon> getPersonen() {
+        List<Persoon> persons = (List<Persoon>) servletContext.getAttribute("dummyUsers");
+        return persons;
+    }
 
 
     @POST
     @Path("/update-person")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updatePerson(Persoon updatedPerson) {
-        List<Persoon> personen = Persoon.createSampleUsers();
-
-        // Zoek de juiste persoon in de lijst en werk het aantal bij
+        List<Persoon> personen = (List<Persoon>) servletContext.getAttribute("dummyUsers");
         for (Persoon persoon : personen) {
             if (persoon.getId().equals(updatedPerson.getId())) {
                 persoon.setAantal(updatedPerson.getAantal());
@@ -52,15 +46,15 @@ public class PersoonResource {
             }
         }
 
+        servletContext.setAttribute("dummyUsers", personen);
+
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             String json = objectMapper.writeValueAsString(personen);
-            // Schrijf de bijgewerkte gegevens naar een JSON-bestand of een database
-            // Implementeer hier de code om de gegevens op te slaan
-
             return Response.ok().build();
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return Response.serverError().build();
         }
-    }}
+    }
+}

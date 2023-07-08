@@ -13,19 +13,25 @@ public class Persoon {
     private int aantal;
     private String id;
 
-    // Standaardconstructor (vereist voor JSON-mapping)
+    private String username;
+    private String password;
+
     public Persoon() {
     }
 
     @JsonCreator
     public Persoon(@JsonProperty("naam") String naam, @JsonProperty("rol") String rol,
                    @JsonProperty("geslacht") String geslacht, @JsonProperty("aantal") int aantal,
-                   @JsonProperty("id") String id) {
+                   @JsonProperty("id") String id, @JsonProperty("username") String username,
+                   @JsonProperty("password") String password) {
         this.naam = naam;
         this.rol = rol;
         this.geslacht = geslacht;
         this.aantal = aantal;
         this.id = id;
+
+        this.username = username;
+        this.password = password;
     }
 
     // Getters en setters
@@ -69,16 +75,22 @@ public class Persoon {
     public void setId(String id) {
         this.id = id;
     }
-
-    // Dummy data
-    public static List<Persoon> createSampleUsers() {
-        List<Persoon> users = new ArrayList<>();
-
-        users.add(new Persoon("Pieter", "Bewoner", "Man", 3, "1"));
-        users.add(new Persoon("Reinder", "Bewoner", "Vrouw", 0, "2"));
-        users.add(new Persoon("Cristiano ronaldo", "Bewoner", "Man", 4, "3"));
-        users.add(new Persoon("Beatrix", "Bewoner", "Vrouw", 14, "4"));
-
-        return users;
+    public String getUsername() {
+        return username;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+
 }

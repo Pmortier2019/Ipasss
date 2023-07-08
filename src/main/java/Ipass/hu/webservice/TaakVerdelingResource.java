@@ -8,24 +8,27 @@ import Ipass.hu.webservice.TaakResource;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
 @Path("/taakverdeling")
-public class TaakVerdeelResource {
+public class TaakVerdelingResource {
+
+    @Context
+    private ServletContext servletContext;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTaakVerdeling() {
-        TaakResource taakResource = new TaakResource();
-        List<Taak> taken = taakResource.getTaken();
-
-        List<Persoon> personen = Persoon.createSampleUsers();
+        List<Taak> taken = (List<Taak>) servletContext.getAttribute("dummyTaken");
+        List<Persoon> personen = (List<Persoon>) servletContext.getAttribute("dummyUsers");
 
         List<TaakVerdeling> taakVerdeling = new ArrayList<>();
         int huidigePersoonIndex = 0;
@@ -37,7 +40,7 @@ public class TaakVerdeelResource {
                 TaakVerdeling verdeling = new TaakVerdeling(persoon, taak);
                 taakVerdeling.add(verdeling);
                 aantalTurven--;
-                persoon.setAantal(aantalTurven);
+                persoon.setAantal(aantalTurven - 1 );
             }
 
             huidigePersoonIndex++;

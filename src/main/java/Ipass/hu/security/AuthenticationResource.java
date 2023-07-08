@@ -11,7 +11,7 @@ import java.security.Key;
 import java.time.Instant;
 import java.util.Date;
 
-@Path("/login")
+//@Path("/login")
 public class AuthenticationResource {
     public static Key key = MacProvider.generateKey();
     public static Date fiveMinuesFromNow = Date.from(Instant.now().plusSeconds(150 * 60));

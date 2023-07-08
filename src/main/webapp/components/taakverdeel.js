@@ -42,11 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error(error);
         });
 
-    // Eventlistener toevoegen aan de gebruikerselectie
     gebruikerSelect.addEventListener('change', function() {
         var gebruikerId = gebruikerSelect.value;
 
-        // Aanroepen van de TaakVerdeelResource met de geselecteerde gebruiker
         fetch('https://ipass-pieter.azurewebsites.net/restservices/taakverdeling')
             .then(function(response) {
                 if (!response.ok) {
@@ -63,9 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Takenlijst leegmaken
                 takenlijst.innerHTML = '';
 
-                // Controleren of de gebruiker taken heeft
                 if (taken.length > 0) {
-                    // Taken weergeven in de lijst
                     taken.forEach(function(verdeling) {
                         var taak = verdeling.taak;
                         var taakItem = document.createElement('li');
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         takenlijst.appendChild(taakItem);
                     });
                 } else {
-                    // Geen taken beschikbaar voor de geselecteerde gebruiker
                     var geenTakenItem = document.createElement('li');
                     geenTakenItem.textContent = 'Gebruiker heeft geen taken.';
                     takenlijst.appendChild(geenTakenItem);
